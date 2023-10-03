@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spring Boot</title>
+    <style>
+        .mensagem {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div class="row">
+            <div class="col">
+                <div th:if="${param.error}">
+                    <button type="button" data-bs-dismiss="alert"></button>
+                    <span th:text="#{login.invalid}">Senha ou usuário inválido</span>
+                </div>
+
+
+                <h1>Cadastro de Usuário</h1>
+                <form th:action="@{/usuario/salvar}" th:object="${usuario}" method="post">
+                    <div>
+                        <label>Nome:</label>
+                        <div>
+                            <input type="text" th:field="*{nome}">
+                        </div>
+                        <div>
+                            <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label>CPF:</label>
+                        <div>
+                            <input type="text" th:field="*{cpf}">
+                        </div>
+                        <div>
+                            <span th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}"></span>
+                        </div>
+                    </div>
+
+
+                    <div>
+                        <label>Nascimento:</label>
+                            <div>
+                                <input type="date" th:field="*{dataNascimento}">
+                            </div>
+                            <div>
+                                <span th:if="${#fields.hasErrors('dataNascimento')}"
+                                    th:errors="*{dataNascimento}"></span>
+                            </div>
+                    </div>
+
+
+                    <div>
+                        <label>Email:</label>
+                        <div>
+                            <input type="email" th:field="*{email}">
+                        </div>
+                        <div cl>
+                            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label>Login:</label>
+                        <div>
+                            <input type="text" th:field="*{login}">
+                        </div>
+                        <div>
+                            <span th:if="${#fields.hasErrors('login')}" th:errors="*{login}"></span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label >Senha:</label>
+                        <div>
+                            <input class="form-control" type="text" th:field="*{password}">
+                        </div>
+                        <div>
+                            <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+                        </div>
+                    </div>
+
+                    <input type="submit" th:value="Cadastrar" />
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

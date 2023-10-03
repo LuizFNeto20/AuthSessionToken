@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spring Boot</title>
+
+    <link rel="stylesheet" th:href="@{/bootstrap-5.3.0-dist/css/bootstrap.min.css}">
+    <script th:src="@{/jquery-3.7.0-dist/jquery-3.7.0.min.js}"></script>
+    <script th:src="@{/bootstrap-5.3.0-dist/js/bootstrap.min.js}"></script>
+    <script th:src="@{/bootstrap-5.3.0-dist/js/bootstrap.bundle.min.js}"></script>
+
+    <style>
+        .mensagem {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div class="row">
+            <div class="col">
+                <div th:if="${param.error}">
+                    <button type="button" data-bs-dismiss="alert"></button>
+                    <span>Senha ou usuário inválido</span>
+                </div>
+
+
+                <form th:action="@{/login}" method="post">
+                    <div>
+                        <label>Usuário:</label>
+                        <div>
+                            <input type="text" name="username">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label>Senha:</label>
+                        <div>
+                            <input type="password" name="password">
+                        </div>
+                    </div>
+                    <input type="submit" th:value="Entrar" />
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
