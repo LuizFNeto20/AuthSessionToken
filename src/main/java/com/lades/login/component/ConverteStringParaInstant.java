@@ -8,7 +8,7 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
 @Component
-public class StringToInstantConverter implements Converter<String, Instant> {
+public class ConverteStringParaInstant implements Converter<String, Instant> {
 
     @Override
     public Instant convert(String source) {
