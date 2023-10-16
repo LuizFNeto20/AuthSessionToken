@@ -1,11 +1,11 @@
 package com.lades.login.modelo;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-import java.util.ArrayList;
 
 import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.security.core.GrantedAuthority;
@@ -38,7 +38,7 @@ public class Usuario implements UserDetails {
 
     // @Id
     // @GeneratedValue(strategy = GenerationType.UUID)
-    // private String uuid;
+    // private UUID id;
 
     @NotBlank
     @Size(min = 3, message = "O nome deve ter no mínimo 3 caracteres")

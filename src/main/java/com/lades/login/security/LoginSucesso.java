@@ -17,7 +17,7 @@ public class LoginSucesso extends SavedRequestAwareAuthenticationSuccessHandler 
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
             Authentication authentication) throws ServletException, IOException {
 
-        String redirectURL = "/usuario/index";
+        String redirectURL = "/index";
         response.sendRedirect(redirectURL);
     }
 

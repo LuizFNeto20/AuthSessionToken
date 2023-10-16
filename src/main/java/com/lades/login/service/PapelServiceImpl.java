@@ -25,10 +25,4 @@ public class PapelServiceImpl implements PapelService {
         return papel.orElseThrow(() -> new ResourceNotFound(id));
     }
 
-    @Override
-    public Papel buscarPapel(String papel) {
-        Papel pp = papelRepository.findByPapel(papel);
-        return pp;
-    }
-
 }

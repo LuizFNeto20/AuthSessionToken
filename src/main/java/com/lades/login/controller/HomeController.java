@@ -7,15 +7,12 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import com.lades.login.dto.AuthenticationDTO;
 import com.lades.login.dto.LoginResponseDTO;
 import com.lades.login.modelo.Usuario;
 import com.lades.login.security.TokenService;
-
-import jakarta.validation.Valid;
 
 @Controller
 public class HomeController {
@@ -32,6 +29,16 @@ public class HomeController {
     }
 
     @PostMapping("/api/login")
+    public ResponseEntity<LoginResponseDTO> loginToken(@RequestParam String username, @RequestParam String password) {
+        var usernamePassword = new UsernamePasswordAuthenticationToken(username, password);
+        var auth = this.authenticationManager.authenticate(usernamePassword);
+
+        var token = tokenService.generateToken((Usuario) auth.getPrincipal());
+
+        return ResponseEntity.ok(new LoginResponseDTO(token));
+    }
+
+    /*@PostMapping("/api/login")
     public ResponseEntity<LoginResponseDTO> loginToken(@RequestBody @Valid AuthenticationDTO data) {
         var usernamePassword = new UsernamePasswordAuthenticationToken(data.login(), data.password());
         var auth = this.authenticationManager.authenticate(usernamePassword);
@@ -39,6 +46,6 @@ public class HomeController {
         var token = tokenService.generateToken((Usuario) auth.getPrincipal());
 
         return ResponseEntity.ok(new LoginResponseDTO(token));
-    }
+    }*/
 
 }

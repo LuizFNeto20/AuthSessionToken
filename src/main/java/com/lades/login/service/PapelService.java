@@ -6,6 +6,4 @@ public interface PapelService {
 
     public Papel buscarPapelPorId(Long id);
 
-    public Papel buscarPapel(String papel);
-
 }

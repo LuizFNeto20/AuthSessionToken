@@ -18,7 +18,7 @@ public class Papel {
 
     // @Id
     // @GeneratedValue(strategy = GenerationType.UUID)
-    // private String uuid;
+    // private UUID id;
 
     private String papel;
 
